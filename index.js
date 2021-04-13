@@ -1,6 +1,7 @@
 /* ----- Sales by Match ----- */
 /* There is a large pile of socks that must be paired by color. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.*/
 //Inputs: n=7, ar = [1,2,1,2,1,3,2]
+//Output: 2
 function sockMerchant(n, ar) {
     if(n > 100 || n < 1) {
         return 'n must be a whole number between 1 and 100'
@@ -18,5 +19,31 @@ function sockMerchant(n, ar) {
         }
     }
     return count
+}
+//O(n)
+
+/* ----- Counting Valleys ----- */
+/* An avid hiker keeps meticulous records of their hikes. During the last hike that took exactly  steps, for every step it was noted if it was an uphill, , or a downhill,  step. Hikes always start and end at sea level, and each step up or down represents a  unit change in altitude. We define the following terms:
+- A mountain is a sequence of consecutive steps above sea level, starting with a step up from sea level and ending with a step down to sea level.
+- A valley is a sequence of consecutive steps below sea level, starting with a step down from sea level and ending with a step up to sea level.
+Given the sequence of up and down steps during a hike, find and print the number of valleys walked through. */
+//Inputs: steps = 8, path = 'DDUUUUDD'
+//Output: 1
+function countingValleys(steps, path) {
+    let pathArray = path.split('')
+    let count = 0 
+    let valley = 0
+    for(let i = 0; i < pathArray.length; i++) {
+        if(pathArray[i] === 'U') {
+            count = count + 1
+        }
+        if(pathArray[i] === 'D') {
+            count = count - 1
+        }
+        if(pathArray[i] === 'U' && count === 0) {
+            valley = valley + 1
+        }
+    }
+    return valley
 }
 //O(n)
