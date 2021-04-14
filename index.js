@@ -65,3 +65,29 @@ function jumpingOnClouds(c) {
   return jumps.length - 1;
 }
 //O(n)
+
+/* ----- Repeated String ----- */
+/*There is a string, , of lowercase English letters that is repeated infinitely many times. Given an integer, , find and print the number of letter a's in the first  letters of the infinite string.*/
+//Inputs: s='aba', n=10
+//Output: 7
+function repeatedString(s, n) {
+    let stringLength = s.length
+    //#of a's in main chunk of repeated string
+    let multiplier = Math.floor(n/stringLength)
+    let aCount = 0
+    for(let i = 0; i < stringLength; i++) {
+        if(s[i] === 'a') {
+            aCount++
+        }
+    }
+    aCount *= multiplier
+    //# of a's i partial string
+    let leftovers = n - stringLength * multiplier
+    for(let i = 0; i < leftovers; i++) {
+        if(s[i] === 'a') {
+            aCount++
+        }
+    }
+    return aCount
+}
+//O(n)
