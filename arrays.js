@@ -33,3 +33,25 @@ function rotLeft(a, d) {
     return a
 }
 //O(n)
+
+/* ----- Equalize the Array ----- */
+/*Given an array of integers, determine the minimum number of elements to delete to leave only elements of equal value.*/
+//Input: [1,2,2,3]
+//Output: 2
+function equalizeArray(arr) {
+    let arrObj = {};
+    let maxCount = 0;
+    //for each number, create a key: value pair
+    for (let num of arr) {
+        //if key exists, add 1. Otherwise, set to 1
+        arrObj[num] = arrObj[num] + 1 || 1;
+    }
+    //for each value in the object, if value is higher than maxCount,   set the max count to the value
+    for (let value in arrObj) {
+        if (arrObj[value] > maxCount) {
+            maxCount = arrObj[value];
+        }
+    }
+    return (arr.length - maxCount);
+}
+//O(n)
