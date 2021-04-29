@@ -74,3 +74,22 @@ function minimumBribes(queue) {
     console.log(bribes)
     }
 }//O(n^2)
+
+/* ----- Minimum Swaps ----- */
+/*You are given an unordered array consisting of consecutive integers  [1, 2, 3, ..., n] without any duplicates. You are allowed to swap any two elements. Find the minimum number of swaps required to sort the array in ascending order.*/
+//Input: [4, 3, 1, 2]
+//Output: 3
+function minimumSwaps(arr) {
+    let swaps = 0
+    for(let i = 0; i < arr.length; i++) {
+        //find the value of the next index
+        let right = i + 1
+        if(arr[i] !== right) {
+            let rightIndex = arr.indexOf(right, i)
+            arr[rightIndex] = arr[i]
+            arr[i] = right
+            swaps++
+        }
+    }
+    return swaps
+}//O(n)
