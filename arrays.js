@@ -171,3 +171,25 @@ function aVeryBigSum(ar) {
     }
     return sum
 }//O(n)
+
+/* ----- Diagonal Difference ----- */
+/*Given a square matrix, calculate the absolute difference between the sums of its diagonals.*/
+//Input: [[11, 2, 4], [4, 5, 6], [10, 8, -12]]
+//Output: 15
+function diagonalDifference(arr) {
+    let sum1 = 0
+    let sum2 = 0
+    for(let i = 0; i < arr.length; i++) {
+        for(let k = 0; k < arr.length; k++) {
+            //an element from the main diagonal
+            if(i === k) {
+                sum1+=arr[i][k]
+            }
+            //an element from the other diagonal
+            if(i + k === arr.length - 1) {
+                sum2+=arr[i][k]
+            }
+        }
+    }
+    return Math.abs(sum1 - sum2)
+}//O(n^2)
